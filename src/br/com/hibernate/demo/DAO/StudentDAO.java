@@ -1,5 +1,7 @@
 package br.com.hibernate.demo.DAO;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
@@ -33,4 +35,18 @@ public class StudentDAO {
 		}
 	}
 
+	public List<Student> selectAllObjects() {
+		session = this.getSessionByTheHibernateFactory();
+		List<Student> studentsList = null;
+		try {
+			session.beginTransaction();
+			studentsList = session.createQuery("from Student").getResultList();
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return studentsList;
+	}
 }
