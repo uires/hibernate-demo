@@ -19,10 +19,9 @@ public class StudentDAO {
 
 	public static StudentDAO getInstanceOf() {
 		if (instancia == null) {
-			return new StudentDAO();
-		} else {
-			return instancia;
+			instancia = new StudentDAO();
 		}
+		return instancia;
 	}
 
 	// prover uma sessão para a classe pesistir
