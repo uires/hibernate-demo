@@ -61,4 +61,20 @@ public class StudentDAO {
 		}
 		return studentsList;
 	}
+
+	public Student selectStudentById(Long idParameterUniqueObject) {
+		Student student = null;
+		session = this.getSessionByTheHibernateFactory();
+		try {
+			session.beginTransaction();
+			student = session.get(Student.class, idParameterUniqueObject);
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			System.err.println("Erro");
+		} finally {
+			session.close();
+		}
+		return student;
+	}
+
 }
