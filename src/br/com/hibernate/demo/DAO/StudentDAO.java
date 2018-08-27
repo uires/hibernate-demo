@@ -7,18 +7,30 @@ import org.hibernate.cfg.Configuration;
 import br.com.hibernate.orm.demo.entity.Student;
 
 public class StudentDAO {
-	private Session session = new Configuration().configure().addAnnotatedClass(Student.class).buildSessionFactory()
-			.getCurrentSession();
+	// define uma sessão do hibernate vinda do hibernateFactory
+	private Session session;
+
+	// prover uma sessão para a classe pesistir
+	private Session getSessionByTheHibernateFactory() {
+		return new Configuration().configure().addAnnotatedClass(Student.class).buildSessionFactory()
+				.getCurrentSession();
+	}
 
 	public void saveObject(Student estudante) {
+		session = this.getSessionByTheHibernateFactory();
 		try {
+			// prover uma transaction para realizar a persistência
 			session.beginTransaction();
+			// salva o objeto Student.class
 			session.save(estudante);
+			// começa realiza a operação (commit)
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
+			// finaliza a sessão fecha-a
 			session.close();
 		}
 	}
+
 }
