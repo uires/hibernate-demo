@@ -11,6 +11,19 @@ import br.com.hibernate.orm.demo.entity.Student;
 public class StudentDAO {
 	// define uma sessão do hibernate vinda do hibernateFactory
 	private Session session;
+	private static StudentDAO instancia = null;
+
+	private StudentDAO() {
+
+	}
+
+	public static StudentDAO getInstanceOf() {
+		if (instancia == null) {
+			return new StudentDAO();
+		} else {
+			return instancia;
+		}
+	}
 
 	// prover uma sessão para a classe pesistir
 	private Session getSessionByTheHibernateFactory() {
