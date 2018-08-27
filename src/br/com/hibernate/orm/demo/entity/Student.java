@@ -8,9 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "student")
+@NoArgsConstructor
 public @Data class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
