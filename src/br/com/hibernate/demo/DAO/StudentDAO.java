@@ -77,4 +77,21 @@ public class StudentDAO {
 		return student;
 	}
 
+	public void updateObject(Long id, String emailAdress, String firstName, String secondName) {
+		session = this.getSessionByTheHibernateFactory();
+		try {
+			session.beginTransaction();
+			Student student = session.get(Student.class, id);
+			student.setEmailAdress(emailAdress);
+			student.setFirstName(firstName);
+			student.setSecondName(secondName);
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+			this.getSessionByTheHibernateFactory().close();
+		}
+	}
+
 }
