@@ -77,6 +77,7 @@ public class StudentDAO {
 		return student;
 	}
 
+	// update object
 	public void updateObject(Long id, String emailAdress, String firstName, String secondName) {
 		session = this.getSessionByTheHibernateFactory();
 		try {
@@ -90,7 +91,6 @@ public class StudentDAO {
 			e.printStackTrace();
 		} finally {
 			session.close();
-			this.getSessionByTheHibernateFactory().close();
 		}
 	}
 
