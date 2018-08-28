@@ -10,10 +10,11 @@
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
-		<property name=""></property>
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
 		<property name="current_session_context_class">thread</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
+		<mapping class="br.com.hibernate.orm.demo.entity.Student" />
+		<mapping class="br.com.hibernate.orm.demo.entity.Endereco" />
 	</session-factory>
 </hibernate-configuration>
