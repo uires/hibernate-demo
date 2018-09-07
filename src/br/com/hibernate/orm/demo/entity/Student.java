@@ -20,13 +20,24 @@ public @Data class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_endereco")
-	private Endereco endereco;
 	@Column(name = "first_name")
 	private String firstName;
 	@Column(name = "second_name")
 	private String secondName;
+	
+	/*
+	*	Cascade: Configura o relacionamento de um objeto ao outro,
+	*	dessa forma por examplo caso haja a exclusão do objeto
+	*	pai pela foreing key o objeto relacionado será excluido.
+	*	Sendo assim qualquer outra ação como edição do pai irá
+	*	ocorrer o mesmo ao objeto relacionando;
+	*/
+	
+	// configura todo tipo de operação remoção, alteração, save, etc.
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_endereco", nullable = false, unique = true)
+	private Endereco endereco;
+
 	@Column(name = "email_adress")
 	private String emailAdress;
 

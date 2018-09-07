@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 
+import br.com.hibernate.demo.factory.HibernateFactory;
 import br.com.hibernate.orm.demo.entity.Student;
 
 public class StudentDAO {
@@ -24,14 +25,8 @@ public class StudentDAO {
 		return instancia;
 	}
 
-	// prover uma sessão para a classe pesistir
-	private Session getSessionByTheHibernateFactory() {
-		return new Configuration().configure().addAnnotatedClass(Student.class).buildSessionFactory()
-				.getCurrentSession();
-	}
-
 	public void saveObject(Student estudante) {
-		session = this.getSessionByTheHibernateFactory();
+		session = HibernateFactory.getSessionByTheHibernateFactory();
 		try {
 			// prover uma transaction para realizar a persistência
 			session.beginTransaction();
@@ -48,7 +43,7 @@ public class StudentDAO {
 	}
 
 	public List<Student> selectAllObjects() {
-		session = this.getSessionByTheHibernateFactory();
+		session = HibernateFactory.getSessionByTheHibernateFactory();
 		List<Student> studentsList = null;
 		try {
 			session.beginTransaction();
@@ -64,7 +59,7 @@ public class StudentDAO {
 
 	public Student selectStudentById(Long idParameterUniqueObject) {
 		Student student = null;
-		session = this.getSessionByTheHibernateFactory();
+		session = HibernateFactory.getSessionByTheHibernateFactory();
 		try {
 			session.beginTransaction();
 			student = session.get(Student.class, idParameterUniqueObject);
@@ -79,7 +74,7 @@ public class StudentDAO {
 
 	// update object
 	public void updateObject(Long id, String emailAdress, String firstName, String secondName) {
-		session = this.getSessionByTheHibernateFactory();
+		session = HibernateFactory.getSessionByTheHibernateFactory();
 		try {
 			session.beginTransaction();
 			Student student = session.get(Student.class, id);

@@ -9,11 +9,13 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "endereco")
+@ToString
 public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +27,11 @@ public class Endereco {
 	private String bairro;
 	@Column(name = "numero", nullable = false)
 	private String numero;
-
+	
+	public Endereco() {
+		
+	}
+	
 	public Endereco(String rua, String bairro, String numero) {
 		this.rua = rua;
 		this.bairro = bairro;
