@@ -10,13 +10,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "student")
-@NoArgsConstructor
-public @Data class Student {
+@Getter
+@Setter
+public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -24,15 +25,14 @@ public @Data class Student {
 	private String firstName;
 	@Column(name = "second_name")
 	private String secondName;
-	
+
 	/*
-	*	Cascade: Configura o relacionamento de um objeto ao outro,
-	*	dessa forma por examplo caso haja a exclusão do objeto
-	*	pai pela foreing key o objeto relacionado será excluido.
-	*	Sendo assim qualquer outra ação como edição do pai irá
-	*	ocorrer o mesmo ao objeto relacionando;
-	*/
-	
+	 * Cascade: Configura o relacionamento de um objeto ao outro, dessa forma por
+	 * examplo caso haja a exclusão do objeto pai pela foreing key o objeto
+	 * relacionado será excluido. Sendo assim qualquer outra ação como edição do pai
+	 * irá ocorrer o mesmo ao objeto relacionando;
+	 */
+
 	// configura todo tipo de operação remoção, alteração, save, etc.
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_endereco", nullable = false, unique = true)
@@ -41,9 +41,19 @@ public @Data class Student {
 	@Column(name = "email_adress")
 	private String emailAdress;
 
+	public Student() {
+	}
+
 	public Student(String first, String secondName, String email) {
 		this.setFirstName(first);
 		this.setEmailAdress(email);
 		this.setSecondName(secondName);
 	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", endereco="
+				+ endereco + ", emailAdress=" + emailAdress + "]";
+	}
+
 }

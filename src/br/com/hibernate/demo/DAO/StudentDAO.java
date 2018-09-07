@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 
 import br.com.hibernate.demo.factory.HibernateFactory;
+import br.com.hibernate.orm.demo.entity.Endereco;
 import br.com.hibernate.orm.demo.entity.Student;
 
 public class StudentDAO {
@@ -89,4 +90,18 @@ public class StudentDAO {
 		}
 	}
 
+	public Endereco selectEnderecoById(Long id) {
+		Endereco endereco = null;
+		session = HibernateFactory.getSessionByTheHibernateFactory();
+		try {
+			session.beginTransaction();
+			endereco = session.get(Endereco.class, id);
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return endereco;
+	}
 }

@@ -8,5 +8,4 @@ public class HibernateFactory {
 	public static Session getSessionByTheHibernateFactory() {
 		return new Configuration().configure().buildSessionFactory().getCurrentSession();
 	}
-
 }

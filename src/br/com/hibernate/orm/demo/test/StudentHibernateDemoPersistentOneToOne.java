@@ -1,7 +1,6 @@
 package br.com.hibernate.orm.demo.test;
 
 import br.com.hibernate.demo.DAO.StudentDAO;
-import br.com.hibernate.demo.factory.HibernateFactory;
 import br.com.hibernate.orm.demo.entity.Endereco;
 import br.com.hibernate.orm.demo.entity.Student;
 
@@ -14,7 +13,7 @@ public class StudentHibernateDemoPersistentOneToOne {
 		// criando os objetos
 		Student student = new Student("Yuri", "D'vlleavv'cy Kezzian", "kezzian@outlook.com");
 		// relacionando um objeto ao outro OneToOne
-		student.setEndereco(new Endereco("Av. Dorival Dos Santos", "Minas Gerais", "nº 989"));
+		student.setEndereco(new Endereco("Av. Dorival Dos Santos", "Dendilarion", "nº 989"));
 		// salvando objeto
 		dao.saveObject(student);
 		
