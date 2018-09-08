@@ -14,7 +14,12 @@
 		<property name="hibernate.format_sql">true</property>
 		<property name="current_session_context_class">thread</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- Mapping entity objects -->
+		
 		<mapping class="br.com.hibernate.orm.demo.entity.Student" />
 		<mapping class="br.com.hibernate.orm.demo.entity.Endereco" />
+		<mapping class="br.com.hibernate.orm.demo.entity.Course" />
+		<mapping class="br.com.hibernate.orm.demo.entity.Instructor" />
 	</session-factory>
 </hibernate-configuration>
