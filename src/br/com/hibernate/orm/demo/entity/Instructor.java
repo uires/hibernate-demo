@@ -5,13 +5,17 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.Data;
 
+@Entity
+@Table(name = "instructor")
 public @Data class Instructor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,8 +28,7 @@ public @Data class Instructor {
 			CascadeType.REFRESH })
 	private List<Course> courses;
 
-	public Instructor(Long id, String name, String registrationCode) {
-		this.id = id;
+	public Instructor(String name, String registrationCode) {
 		this.name = name;
 		this.registrationCode = registrationCode;
 	}
