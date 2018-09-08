@@ -33,7 +33,7 @@ public class Student {
 	 * irá ocorrer o mesmo ao objeto relacionando;
 	 */
 
-	// configura todo tipo de operação remoção, alteração, save, etc.
+	// configura para todos os tipos de operações 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_endereco", nullable = false, unique = true)
 	private Endereco endereco;

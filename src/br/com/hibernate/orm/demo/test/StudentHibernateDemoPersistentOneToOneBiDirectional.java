@@ -9,6 +9,6 @@ public class StudentHibernateDemoPersistentOneToOneBiDirectional {
 		StudentDAO dao = null;
 		dao = StudentDAO.getInstanceOf();
 		Endereco endereco = dao.selectEnderecoById(2L);
-		System.out.println(endereco.getStudent().getFirstName());
+		System.out.println(endereco.toString());
 	}
 }

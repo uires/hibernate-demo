@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @Entity
@@ -27,7 +28,6 @@ public class Endereco {
 	private String bairro;
 	@Column(name = "numero", nullable = false)
 	private String numero;
-
 	@OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL)
 	private Student student;
 
@@ -39,4 +39,5 @@ public class Endereco {
 		this.bairro = bairro;
 		this.numero = numero;
 	}
+	
 }
