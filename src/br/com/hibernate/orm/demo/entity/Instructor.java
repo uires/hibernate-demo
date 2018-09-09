@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,9 +25,13 @@ public @Data class Instructor {
 	private String name;
 	@Column(name = "registration_code")
 	private String registrationCode;
-	@OneToMany(mappedBy = "instructor", cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
-			CascadeType.REFRESH })
-	private List<Course> courses;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "instructor", cascade = { CascadeType.DETACH, CascadeType.PERSIST,
+			CascadeType.MERGE, CascadeType.REFRESH })
+	private List<Course> courses = new ArrayList<>();
+
+	public Instructor() {
+
+	}
 
 	public Instructor(String name, String registrationCode) {
 		this.name = name;
@@ -34,11 +39,7 @@ public @Data class Instructor {
 	}
 
 	public void add(Course course) {
-		if (this.courses == null) {
-			courses = new ArrayList<>();
-		}
-		courses.add(course);
+		this.courses.add(course);
 		course.setInstructor(this);
 	}
-
 }

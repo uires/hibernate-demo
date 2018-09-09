@@ -3,6 +3,7 @@ package br.com.hibernate.orm.demo.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,9 +23,14 @@ public @Data class Course {
 	@Column(name = "title")
 	private String title;
 
-	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
-	@JoinColumn(name = "id_instructor")	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinColumn(name = "id_instructor")
 	private Instructor instructor;
+
+	public Course() {
+
+	}
 
 	public Course(String title, Instructor instructor) {
 		this.title = title;
