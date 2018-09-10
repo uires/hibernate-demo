@@ -1,16 +1,18 @@
 package br.com.hibernate.orm.demo.test;
 
-import org.junit.Test;
-
 import br.com.hibernate.demo.DAO.StudentDAO;
+import br.com.hibernate.orm.demo.entity.Endereco;
 import br.com.hibernate.orm.demo.entity.Student;
 
 public class StudentHibernateDemoPersistentCreate {
 
-	@Test
-	public void testInsertObject() {
+	public static void main(String[] args) {
+
 		StudentDAO dao = null;
 		dao = StudentDAO.getInstanceOf();
-		dao.saveObject(new Student("Uíres", "Sousa", "uires@gmail.com"));
+		Student student = new Student("Poliana", "Santana", "poli@gmail.com");
+		student.setEndereco(new Endereco("Rua das Flores", "Magalhães", "nº7754"));
+		dao.saveObject(student);
+
 	}
 }

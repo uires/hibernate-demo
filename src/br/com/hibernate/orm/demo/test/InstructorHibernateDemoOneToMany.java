@@ -17,17 +17,18 @@ public class InstructorHibernateDemoOneToMany {
 
 			// criando os objetos
 			Course course = new Course();
-			course.setTitle("Java EE");
+			course.setTitle("Guitar Play");
 			Course course2 = new Course();
-			course2.setTitle("ASP.NET Core Framework");
+			course2.setTitle("ECMAScript 6");
 
 			// adicionando os elementos a lista
 			instructor.add(course);
 			instructor.add(course2);
-			
+
 			// salvando os objetos
 			daoCourse.save(course);
 			daoCourse.save(course2);
+
 		} catch (SQLException e) {
 			System.err.println("SQLException: " + e.getMessage());
 		}
