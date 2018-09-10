@@ -3,23 +3,22 @@ package br.com.hibernate.orm.demo.test;
 import java.sql.SQLException;
 
 import br.com.hibernate.demo.DAO.CourseDAO;
-import br.com.hibernate.demo.DAO.InstructorDAO;
 import br.com.hibernate.orm.demo.entity.Course;
-import br.com.hibernate.orm.demo.entity.Instructor;
+import br.com.hibernate.orm.demo.entity.Review;
 
 public class CourseReviewHibernateDemoOneToManyUni {
 	public static void main(String[] args) {
-		// criando o objeto
-		InstructorDAO dao = new InstructorDAO();
+		// criando o objeto DAO
 		CourseDAO daoCourse = new CourseDAO();
 		try {
-			Instructor instructor = dao.selectById(6L);
+			// busca o objeto no banco
+			Course course = daoCourse.selectById(18L);
 			
-			
-			//System.out.println(course.getReviews().get(0).getDescricao());
-			
-			
-
+			// realiza um interação na lista de review do curso
+			for (Review review : course.getReviews()) {
+				System.out.println(review.getDescricao());
+				System.out.println(review.getNota());
+			}
 		} catch (SQLException e) {
 			System.err.println("SQLException: " + e.getMessage());
 		}

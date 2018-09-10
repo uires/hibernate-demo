@@ -23,6 +23,11 @@ public class Review {
 
 	}
 
+	public Review(String descricao, int nota) {
+		this.descricao = descricao;
+		this.nota = nota;
+	}
+
 	public Long getId() {
 		return id;
 	}
