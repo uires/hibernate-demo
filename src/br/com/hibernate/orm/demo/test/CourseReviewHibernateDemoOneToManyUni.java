@@ -12,9 +12,10 @@ public class CourseReviewHibernateDemoOneToManyUni {
 		CourseDAO daoCourse = new CourseDAO();
 		try {
 			// busca o objeto no banco
-			Course course = daoCourse.selectById(18L);
-			
+			Course course = daoCourse.selectById(20L);
+
 			// realiza um interação na lista de review do curso
+
 			for (Review review : course.getReviews()) {
 				System.out.println(review.getDescricao());
 				System.out.println(review.getNota());

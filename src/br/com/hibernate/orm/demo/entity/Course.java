@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -35,6 +37,14 @@ public @Data class Course {
 	@JoinColumn(name = "id_course")
 	private List<Review> reviews;
 
+	@ManyToMany
+	@JoinTable(
+			name="course_student",
+			joinColumns = @JoinColumn(name = "id_course"),
+			inverseJoinColumns= @JoinColumn(name = "id_student")
+		)
+	private List<Student> students;
+	
 	public Course() {
 
 	}

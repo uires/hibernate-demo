@@ -31,4 +31,11 @@ public class CourseDAO {
 		session.close();
 		return course;
 	}
+
+	public void update(Course course) {
+		session = HibernateFactory.getSessionByTheHibernateFactory();
+		session.beginTransaction();
+		session.update(course);
+		session.getTransaction().commit();
+	}
 }
